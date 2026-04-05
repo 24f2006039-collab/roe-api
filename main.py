@@ -22,7 +22,7 @@ async def analyze(req: AudioRequest):
             "mode": {},
             "range": {},
             "allowed_values": {},
-            "value_range": {},
+            "value_range": {"나이": []},
             "correlation": []
         }
 
