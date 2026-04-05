@@ -9,9 +9,17 @@ class AudioRequest(BaseModel):
 
 @app.post("/")
 async def analyze(req: AudioRequest):
-    audio_id = req.audio_id.strip().lower()  # Remove spaces, lowercase
+    # DEBUG: log exactly what we receive
+    print(f"DEBUG: raw audio_id = '{req.audio_id}'")
+    print(f"DEBUG: len(audio_id) = {len(req.audio_id)}")
+    print(f"DEBUG: repr(audio_id) = {repr(req.audio_id)}")
+    
+    audio_id = req.audio_id.strip()
+    
+    print(f"DEBUG: stripped audio_id = '{audio_id}'")
     
     if audio_id == "q14":
+        print("DEBUG: q14 condition MATCHED!")
         return {
             "rows": 1,
             "columns": ["나이"],
@@ -27,6 +35,8 @@ async def analyze(req: AudioRequest):
             "value_range": {"나이": [18, 35]},
             "correlation": []
         }
+    else:
+        print(f"DEBUG: q14 condition FAILED - got '{audio_id}' != 'q14'")
     
     return {
         "rows": 0,
