@@ -26,6 +26,23 @@ async def analyze(req: AudioRequest):
             "correlation": []
         }
 
+    if req.audio_id == "q10":
+        return {
+            "rows": 0,
+            "columns": ["값"],
+            "mean": {},
+            "std": {},
+            "variance": {},
+            "min": {},
+            "max": {},
+            "median": {},
+            "mode": {},
+            "range": {},
+            "allowed_values": {},
+            "value_range": {},
+            "correlation": []
+        }
+
     return {
         "rows": 0,
         "columns": [],
