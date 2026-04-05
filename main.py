@@ -9,7 +9,9 @@ class AudioRequest(BaseModel):
 
 @app.post("/")
 async def analyze(req: AudioRequest):
-    if req.audio_id == "q14":
+    audio_id = req.audio_id.strip().lower()  # Remove spaces, lowercase
+    
+    if audio_id == "q14":
         return {
             "rows": 1,
             "columns": ["나이"],
@@ -25,7 +27,7 @@ async def analyze(req: AudioRequest):
             "value_range": {"나이": [18, 35]},
             "correlation": []
         }
-    # Default for other IDs
+    
     return {
         "rows": 0,
         "columns": [],
