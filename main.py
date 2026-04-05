@@ -11,7 +11,7 @@ class AudioRequest(BaseModel):
 async def analyze(req: AudioRequest):
     if req.audio_id == "q14":
         return {
-            "rows": 0,
+            "rows": 125,
             "columns": ["나이"],
             "mean": {},
             "std": {},
